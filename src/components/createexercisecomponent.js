@@ -9,8 +9,8 @@ class CreateExercisesList extends Component {
 
         this.onChangeUsername = this.onChangeUsername.bind(this);
         this.onChangeDescription = this.onChangeDescription.bind(this);
-        this.onChangeDuration = this.onChangeDuration.bind(this);
         this.onChangeDate = this.onChangeDate.bind(this);
+        this.onChangeDuration = this.onChangeDuration.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
 
         this.state = {
@@ -34,13 +34,14 @@ class CreateExercisesList extends Component {
             })
             .catch((error) => {
                 console.log(error);
-            });
+            })
+
     }
 
     onChangeUsername(e) {
         this.setState({
             username: e.target.value
-        });
+        })
     }
 
     onChangeDescription(e) {
@@ -69,11 +70,11 @@ class CreateExercisesList extends Component {
             description: this.state.description,
             duration: this.state.duration,
             date: this.state.date
-        };
+        }
 
         console.log(exercise);
 
-        axios.post('http://localhost:5000/exercise/add', exercise)
+        axios.post('http://localhost:5000/exercises/add', exercise)
             .then(res => console.log(res.data));
 
         window.location = '/';
